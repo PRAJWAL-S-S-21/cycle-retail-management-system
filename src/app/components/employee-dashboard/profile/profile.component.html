@@ -1,0 +1,122 @@
+<!-- <div class="profile-card" *ngIf="employee">
+    <h2>👤 Employee Profile</h2>
+    <p><strong>Username:</strong> {{ employee.username }}</p>
+    <p><strong>Email:</strong> {{ employee.email }}</p>
+    <p><strong>Role:</strong> {{ employee.role }}</p>
+    <p><strong>Created At:</strong> {{ employee.createdAt | date:'medium' }}</p>
+  </div>
+   -->
+   <!-- <div class="profile-card" *ngIf="employee">
+    <div class="profile-image-container">
+      <div class="profile-image">
+        <img src="assets/logo/profile_icon.jpg" alt="Employee Profile">
+      </div>
+    </div>
+    
+    <div class="profile-details">
+      <h2>Employee Profile</h2>
+      <p>
+        <strong>Username:</strong>
+        <span>{{ employee.username }}</span>
+      </p>
+      <p>
+        <strong>Email:</strong>
+        <span>{{ employee.email }}</span>
+      </p>
+      <p>
+        <strong>Role:</strong>
+        <span>{{ employee.role }}</span>
+      </p>
+      <p>
+        <strong>Created At:</strong>
+        <span>{{ employee.createdAt | date:'medium' }}</span>
+      </p>
+    </div>
+  </div> -->
+
+  <div class="profile-container">
+    <div class="profile-card">
+      <div class="profile-header">
+        <h2>Employee Profile</h2>
+      </div>
+      
+      <div class="profile-content">
+        <div class="profile-image-container">
+          <div class="profile-image">
+            <img src="assets/logo/profile_icon.jpg" alt="Employee Profile">
+          </div>
+        </div>
+        
+        <div class="profile-details">
+          <div class="detail-row">
+            <div class="detail-label">Username:</div>
+            <div class="detail-value">{{ employee?.username }}</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Email:</div>
+            <div class="detail-value">{{ employee?.email }}</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Role:</div>
+            <div class="detail-value">{{ employee?.role }}</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Created At:</div>
+            <div class="detail-value">{{ employee?.createdAt | date:'medium' }}</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="profile-actions">
+        <button class="btn btn-edit" (click)="toggleEdit()">Edit Profile</button>
+        <button class="btn btn-change-password" (click) = "logout()">Logout</button>
+      </div>
+    </div>    
+ </div>
+
+
+  <!-- <div class="profile-edit-form" *ngIf="editMode">
+    <div class="form-group">
+      <label>Username:</label>
+      <input type="text" [(ngModel)]="editableEmployee.username" />
+    </div>
+
+    <div class="form-group">
+      <label>Email:</label>
+      <input type="email" [(ngModel)]="editableEmployee.email" />
+    </div>
+
+    <div class="form-group">
+      <label>New Password (optional):</label>
+      <input type="password" [(ngModel)]="editableEmployee.password" />
+    </div>
+
+    <div class="form-buttons">
+      <button class="save-btn" (click)="saveProfileChanges()">Save</button>
+      <button class="cancel-btn" (click)="toggleEdit()">Cancel</button>
+    </div>
+  </div> -->
+
+  <div class="modal-overlay" *ngIf="editMode">
+    <div class="profile-edit-form">
+      <div class="form-group">
+        <label>Username:</label>
+        <input type="text" [(ngModel)]="editableEmployee.username" />
+      </div>
+  
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="email" [(ngModel)]="editableEmployee.email" />
+      </div>
+  
+      <div class="form-group">
+        <label>New Password (optional):</label>
+        <input type="password" [(ngModel)]="editableEmployee.password" />
+      </div>
+  
+      <div class="form-buttons">
+        <button class="save-btn" (click)="saveProfileChanges()">Save</button>
+        <button class="cancel-btn" (click)="toggleEdit()">Cancel</button>
+      </div>
+    </div>
+  </div>

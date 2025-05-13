@@ -1,0 +1,35 @@
+
+  <div class="login-wrapper">
+    <div class="top-left-logo-container">
+      <div class="top-left-logo"></div>
+      <div class="logo-text">Cycles</div>
+  </div>
+<div class="login-container">
+    <form (submit)="login()" class="login-form">
+        <div class="logo-container">
+            <!-- <h2>🚲 EG Cycle Store 🚲</h2> -->
+             <h2>EG Cycle Store</h2>
+        </div>
+        <div class="form-group">
+            <label for="accountType">Account Type</label>
+            <select [(ngModel)]="loginData.AccountType" name="accountType" id="accountType" required>
+                <option value="" disabled selected>Select Account Type</option>
+                  <option value="Admin">Admin</option>
+                  <option value="Employee">Employee</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" [(ngModel)]="loginData.Email" name="email" id="email" placeholder="Enter your email" required />
+        </div>
+    
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" [(ngModel)]="loginData.Password" name="password" id="password" placeholder="Enter your password" required />
+        </div>
+    
+        <button type="submit">Login</button>
+    </form>
+    </div>
+</div>

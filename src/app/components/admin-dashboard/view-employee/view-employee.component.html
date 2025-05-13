@@ -1,0 +1,100 @@
+<div class="employee-container">
+    <h2>Employee Details</h2>
+
+    <!-- Add Employee Button -->
+
+        <!-- Add Employee Button -->
+        <button class="add-btn" (click)="openAddModal()">
+            <i class="fa fa-plus"></i> Add Employee
+        </button>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th><i class="fas fa-user"></i> Username</th>
+                <th><i class="fas fa-envelope"></i> Email</th>
+                <th><i class="fas fa-user-tag"></i> Role</th>
+                <th><i class="fas fa-calendar-alt"></i> Created At</th>
+                <th><i class="fas fa-tools"></i> Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees">
+                <td>{{ employee.username }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.role }}</td>
+                <td>{{ employee.createdAt | date: 'short' }}</td>
+                <td>
+                    <!-- Edit Button -->
+                    <button class="edit-btn" (click)="editEmployee(employee)"><i class="fa fa-pencil"></i> Edit</button>
+                    
+                    <!-- Delete Button -->
+                    <button class="delete-btn" (click)="deleteEmployee(employee.userID)"><i class="fa fa-trash"></i> Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+     <!-- Modal for Add/Edit Employee -->
+     <div class="modal" *ngIf="isModalOpen">
+        <div class="modal-content">
+            <h2>{{ isEditing ? 'Edit Employee' : 'Add Employee' }}</h2>
+
+            <form #employeeForm="ngForm" (ngSubmit)="isEditing ? saveChanges() : addEmployee()">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input 
+                        id="username" 
+                        type="text" 
+                        [(ngModel)]="selectedEmployee.username" 
+                        name="username" 
+                        required
+                        placeholder="Enter username">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input 
+                        id="email" 
+                        type="email" 
+                        [(ngModel)]="selectedEmployee.email" 
+                        name="email" 
+                        required
+                        placeholder="Enter email">
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Role:</label>
+                    <select 
+                        id="role" 
+                        [(ngModel)]="selectedEmployee.role" 
+                        name="role"
+                        required>
+                        <option value="" disabled>Select a role</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Employee">Employee</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password {{ isEditing ? '(Optional)' : '(Required)' }}:</label>
+                    <input 
+                        id="password" 
+                        type="password" 
+                        [(ngModel)]="selectedEmployee.password" 
+                        name="password"
+                        [required]="!isEditing"
+                        placeholder="Enter password">
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="submit" class="save-btn">
+                        {{ isEditing ? 'Save Changes' : 'Register Employee' }}
+                    </button>
+                    <button type="button" class="close-btn" (click)="closeModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,171 @@
+
+   <div class="customers-container">
+    <h2 class="section-title">View Customers</h2>
+
+    <div class="filters-container">
+      <!-- Search Input -->
+      <div class="filter-group">
+        <input type="text" [(ngModel)]="searchTerm" 
+               (input)="applyFilters()" 
+               placeholder="Search customers...">
+      </div>
+      
+      <!-- Date Range Filter -->
+      <div class="filter-group">
+        <label>From:</label>
+        <input type="date" [(ngModel)]="fromDate" (change)="applyFilters()">
+      </div>
+      <div class="filter-group">
+        <label>To:</label>
+        <input type="date" [(ngModel)]="toDate" (change)="applyFilters()">
+      </div>
+      
+      <!-- Reset Button -->
+      <button class="reset-btn" (click)="resetFilters()">Reset Filters</button>
+    </div>
+  
+    <div class="table-responsive">
+      <table class="customer-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Billing Address</th>
+            <th>Shipping Address</th>
+            <!-- <th>Loyalty Points</th> -->
+            <th>Created</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of getPaginatedCustomers()">
+            <td>{{ customer.firstName }} {{ customer.lastName }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.phone }}</td>
+            <td>
+              {{ customer.billingAddress?.streetLine1 }},
+              {{ customer.billingAddress?.city }},
+              {{ customer.billingAddress?.state }}
+            </td>
+            <td>
+              {{ customer.shippingAddress?.streetLine1 }},
+              {{ customer.shippingAddress?.city }},
+              {{ customer.shippingAddress?.state }}
+            </td>
+            <!-- <td>{{ customer.loyaltyPoints }}</td> -->
+            <td>{{ customer.createdAt | date: 'short' }}</td>
+            <button class="action-btn edit-btn" (click)="openEditModal(customer)">
+                <i class="fas fa-edit"></i> Edit
+              </button>
+              <button class="action-btn delete-btn" (click)="deleteCustomer(customer.customerID)">
+                <i class="fas fa-trash-alt"></i> Delete
+              </button>
+          </tr>
+        </tbody>
+        <!-- Add pagination controls after your table -->
+      <div class="pagination-controls" *ngIf="filteredCustomers.length > itemsPerPage">
+        <button (click)="previousPage()" [disabled]="currentPage === 1">
+          <i class="fas fa-chevron-left"></i> Previous
+        </button>
+        
+        <span class="page-info">
+          Page {{currentPage}} of {{totalPages}}
+        </span>
+        
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+          Next <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+      </table>
+    </div>
+</div>
+
+<div *ngIf="filteredCustomers?.length === 0" class="empty-state">
+  <i class="fas fa-users"></i>
+  <p>No customers found matching your criteria</p>
+</div>
+
+
+<!-- Edit Modal -->
+<div class="modal" *ngIf="selectedCustomer" (click)="closeModal($event)">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h3>Edit Customer</h3>
+      <form (ngSubmit)="updateCustomer()" #editForm="ngForm">
+        <label>First Name:
+          <input type="text" [(ngModel)]="selectedCustomer.firstName" name="firstName" required>
+        </label>
+        <label>Last Name:
+          <input type="text" [(ngModel)]="selectedCustomer.lastName" name="lastName" required>
+        </label>
+        <label>Email:
+          <input type="email" [(ngModel)]="selectedCustomer.email" name="email" required>
+        </label>
+        <label>Phone:
+          <input type="text" [(ngModel)]="selectedCustomer.phone" name="phone" required>
+        </label>
+        
+        <!-- Billing Address -->
+      <fieldset>
+        <legend>Billing Address</legend>
+
+        <label>Street Line 1:
+          <input type="text" [(ngModel)]="selectedCustomer.billingAddress.streetLine1" name="billingStreet1">
+        </label>
+
+        <label>Street Line 2:
+          <input type="text" [(ngModel)]="selectedCustomer.billingAddress.streetLine2" name="billingStreet2">
+        </label>
+
+        <label>City:
+          <input type="text" [(ngModel)]="selectedCustomer.billingAddress.city" name="billingCity">
+        </label>
+
+        <label>State:
+          <input type="text" [(ngModel)]="selectedCustomer.billingAddress.state" name="billingState">
+        </label>
+
+        <label>Postal Code:
+          <input type="text" [(ngModel)]="selectedCustomer.billingAddress.postalCode" name="billingPostalCode">
+        </label>
+
+        <label>Country:
+          <input type="text" [(ngModel)]="selectedCustomer.billingAddress.country" name="billingCountry">
+        </label>
+      </fieldset>
+
+      <!-- Shipping Address -->
+      <fieldset>
+        <legend>Shipping Address</legend>
+
+        <label>Street Line 1:
+          <input type="text" [(ngModel)]="selectedCustomer.shippingAddress.streetLine1" name="shippingStreet1">
+        </label>
+
+        <label>Street Line 2:
+          <input type="text" [(ngModel)]="selectedCustomer.shippingAddress.streetLine2" name="shippingStreet2">
+        </label>
+
+        <label>City:
+          <input type="text" [(ngModel)]="selectedCustomer.shippingAddress.city" name="shippingCity">
+        </label>
+
+        <label>State:
+          <input type="text" [(ngModel)]="selectedCustomer.shippingAddress.state" name="shippingState">
+        </label>
+
+        <label>Postal Code:
+          <input type="text" [(ngModel)]="selectedCustomer.shippingAddress.postalCode" name="shippingPostalCode">
+        </label>
+
+        <label>Country:
+          <input type="text" [(ngModel)]="selectedCustomer.shippingAddress.country" name="shippingCountry">
+        </label>
+      </fieldset>
+  
+        <button type="submit">Update</button>
+        <button type="button" (click)="cancelEdit()">Cancel</button>
+      </form>
+    </div>
+  </div>
+  

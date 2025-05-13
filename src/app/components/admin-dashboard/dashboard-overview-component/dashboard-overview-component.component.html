@@ -1,0 +1,97 @@
+
+<div class="overview-container">
+    <!-- Page Heading -->
+    <div class="page-heading">
+      <h1>Dashboard Overview</h1>
+    </div>
+  
+    <!-- Cards Row -->
+    <div class="cards-row">
+      <!-- Total Customers Card -->
+      <div class="card primary-card">
+        <div class="card-body">
+          <div class="card-content">
+            <div class="card-info">
+              <div class="card-label">Total Customers</div>
+              <div class="card-value">{{totalCustomers | number}}</div>
+            </div>
+            <div class="card-icon">
+              <i class="fas fa-users"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Total Employees Card -->
+      <div class="card success-card">
+        <div class="card-body">
+          <div class="card-content">
+            <div class="card-info">
+              <div class="card-label">Total Employees</div>
+              <div class="card-value">{{totalEmployees | number}}</div>
+            </div>
+            <div class="card-icon">
+              <i class="fas fa-id-badge"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Total Orders Card -->
+      <div class="card info-card">
+        <div class="card-body">
+          <div class="card-content">
+            <div class="card-info">
+              <div class="card-label">Total Orders</div>
+              <div class="card-value">{{totalOrders | number}}</div>
+            </div>
+            <div class="card-icon">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Total Order Items Card -->
+      <div class="card warning-card">
+        <div class="card-body">
+          <div class="card-content">
+            <div class="card-info">
+              <div class="card-label">Total Order Items</div>
+              <div class="card-value">{{totalOrderItems | number}}</div>
+            </div>
+            <div class="card-icon">
+              <i class="fas fa-box"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="charts-container" *ngIf="chartsReady">
+    <!-- Pie Chart -->
+    <div class="chart-box">
+      <h3>Revenue by Payment Method</h3>
+      <div class="chart-wrapper">
+        <canvas baseChart
+          [data]="paymentMethodChartData"
+          [options]="paymentMethodChartOptions"
+          type="pie">
+        </canvas>
+      </div>
+    </div>
+  
+    <!-- Line Chart -->
+    <div class="chart-box">
+      <h3>Orders Per Day</h3>
+      <div class="chart-wrapper">
+        <canvas baseChart
+          [data]="ordersPerDayChartData"
+          [options]="ordersPerDayChartOptions"
+          type="line">
+        </canvas>
+      </div>
+    </div>
+  </div>

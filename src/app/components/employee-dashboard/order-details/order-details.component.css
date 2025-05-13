@@ -1,0 +1,215 @@
+
+
+/* Global styles for the container */
+.order-details-container {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 20px;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Title styling */
+.title {
+  color: #42b4e6;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+/* Section styling - keep your existing div.section structure */
+.section {
+  background-color: #121212;
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Headings within sections */
+.section h4 {
+  color: #42b4e6;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Paragraph styling within sections */
+.section p {
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+/* Strong tags for labels */
+.section p strong {
+  color: #6c757d;
+  display: inline-block;
+  min-width: 120px;
+}
+
+/* Items table styling */
+.items-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background-color: #121212;
+}
+
+.items-table th {
+  background-color: #0c2033;
+  color: #42b4e6;
+  text-align: left;
+  padding: 12px 15px;
+  font-weight: 500;
+}
+
+.items-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #333;
+}
+
+.items-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Payment summary styling */
+.payment-summary {
+  background-color: #121212;
+  border-radius: 6px;
+}
+
+.payment-summary p {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+
+.payment-summary p:last-child {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #333;
+}
+
+.payment-summary p:last-child strong,
+.payment-summary p:last-child {
+  color: #28a745;
+  font-weight: 600;
+}
+
+/* Action buttons */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.back-btn {
+  background-color: #1c1c1c;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-btn:hover {
+  background-color: #333;
+}
+
+.print-btn {
+  background-color: #1c1c1c;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.print-btn:hover {
+  background-color: #333;
+}
+
+/* Order status indicators */
+[class^="status-"] {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.status-pending {
+  background-color: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+}
+
+.status-processing {
+  background-color: rgba(13, 202, 240, 0.2);
+  color: #0dcaf0;
+}
+
+.status-shipped {
+  background-color: rgba(66, 180, 230, 0.2);
+  color: #42b4e6;
+}
+
+.status-delivered {
+  background-color: rgba(40, 167, 69, 0.2);
+  color: #28a745;
+}
+
+.status-cancelled {
+  background-color: rgba(220, 53, 69, 0.2);
+  color: #dc3545;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section p strong {
+    display: block;
+    margin-bottom: 4px;
+  }
+  
+  .payment-summary p {
+    flex-direction: column;
+    text-align: right;
+  }
+  
+  .payment-summary p strong {
+    text-align: left;
+  }
+  
+  .items-table th, 
+  .items-table td {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #print-section, #print-section * {
+    visibility: visible;
+  }
+
+  #print-section {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .actions{
+    display: none !important;
+  }
+}

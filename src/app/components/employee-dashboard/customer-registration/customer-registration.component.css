@@ -1,0 +1,170 @@
+/* Customer Form Styling */
+.customer-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .form-card {
+    width: 100%;
+    max-width: 900px;
+    background: rgba(0, 0, 0, 0.01);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    color: #e0e6ed;
+  }
+  
+  .form-title {
+    color: #35b8e0;
+    margin-top: 0;
+    border-bottom: 2px solid #35b8e0;
+    padding-bottom: 10px;
+    font-weight: 400;
+  }
+  
+  .section-title {
+    color: #28d87c;
+    margin-bottom: 15px;
+    font-weight: 400;
+  }
+  
+  .customer-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .form-group {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .form-label {
+    display: block;
+    margin-bottom: 6px;
+    color: #8c9db5;
+    font-size: 14px;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 10px;
+    background: rgba(30, 30, 30, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: #e0e6ed;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border-color: #35b8e0;
+    box-shadow: 0 0 0 2px rgba(53, 184, 224, 0.3);
+  }
+  
+  .address-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between; /* Changed from flex-end to space-between */
+    align-items: center;
+    width: 100%;
+  }
+  
+  .secondary-button {
+    display: flex;
+    align-items: center;
+    background: rgba(40, 40, 40, 0.7);
+    /* color: #e0e6ed; */
+    color: grey;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 20px; /* Slightly reduced font size for better visual balance */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    margin-right: auto; /* This pushes it to the left */
+  }
+  
+  .secondary-button:before {
+    content: '';
+    background-image: url('/assets/logo/undo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30px; /* Slightly reduced for better proportions */
+    height: 30px; /* Slightly reduced for better proportions */
+    margin-right: 8px;
+    display: inline-block;
+  }
+  
+  .secondary-button:hover {
+    background: rgba(60, 60, 60, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .submit-btn {
+    background: linear-gradient(45deg, #35b8e0, #2c9ed8);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 19px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(43, 164, 204, 0.3);
+  }
+  
+  .submit-btn:hover {
+    background: linear-gradient(45deg, #2c9ed8, #35b8e0);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(43, 164, 204, 0.4);
+  }
+  
+  @media (max-width: 768px) {
+    .form-group {
+      min-width: 100%;
+    }
+    
+    .form-card {
+      padding: 20px;
+    }
+    
+    /* Added styles for mobile responsiveness */
+    .form-actions {
+      flex-direction: column-reverse; /* Stack buttons in reverse order on mobile */
+      gap: 15px;
+    }
+    
+    .secondary-button, .submit-btn {
+      width: 100%;
+      justify-content: center;
+      margin-right: 0; /* Remove margin on mobile */
+    }
+    
+    .submit-btn {
+      margin-bottom: 10px; /* Add some space between buttons */
+    }
+  }

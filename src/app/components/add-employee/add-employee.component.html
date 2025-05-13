@@ -1,0 +1,57 @@
+
+
+<div class="add-employee-container">
+    <h2>Add Employee</h2>
+    <form (ngSubmit)="registerEmployee()">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input 
+                type="text" 
+                id="username" 
+                [(ngModel)]="employee.username" 
+                name="username" 
+                placeholder="Enter username" 
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input 
+                type="email" 
+                id="email" 
+                [(ngModel)]="employee.email" 
+                name="email" 
+                placeholder="Enter email" 
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="passwordHash">Password</label>
+            <input 
+                type="password" 
+                id="passwordHash" 
+                [(ngModel)]="employee.passwordHash" 
+                name="passwordHash" 
+                placeholder="Enter password" 
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="role">Role</label>
+            <select 
+                id="role" 
+                [(ngModel)]="employee.role" 
+                name="role" 
+                required>
+                <option value="" disabled selected>Select a role</option>
+                <option value="Admin">Admin</option>
+                <option value="Employee">Employee</option>
+            </select>
+        </div>
+
+        <div class="button-group">
+            <button type="submit" class="submit-btn">Register Employee</button>
+            <button type="button" class="cancel-btn" (click)="close()">Close</button>
+        </div>
+    </form>
+</div>

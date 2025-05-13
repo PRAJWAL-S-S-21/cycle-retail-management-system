@@ -1,0 +1,107 @@
+
+  <div class="sales-container">
+    <!-- Page Heading -->
+    <div class="page-heading">
+      <h1>Sales & Revenue Overview</h1>
+    </div>
+  
+    <!-- Cards Row -->
+    <div class="cards-row">
+      <!-- Total Revenue Card -->
+      <div class="card primary-card">
+        <div class="card-body">
+          <div class="card-content">
+            <div class="card-info">
+              <div class="card-label">Total Revenue</div>
+              <div class="card-value">${{totalRevenue | number}}</div>
+            </div>
+            <div class="card-icon">
+              <i class="fas fa-dollar-sign"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Revenue Today Card -->
+      <div class="card success-card">
+        <div class="card-body">
+          <div class="card-content">
+            <div class="card-info">
+              <div class="card-label">Revenue Today</div>
+              <div class="card-value">${{revenueToday | number}}</div>
+            </div>
+            <div class="card-icon">
+              <i class="fas fa-calendar-day"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Revenue This Month Card -->
+      <div class="card info-card">
+        <div class="card-body">
+          <div class="card-content">
+            <div class="card-info">
+              <div class="card-label">Revenue This Month</div>
+              <div class="card-value">${{revenueThisMonth | number}}</div>
+            </div>
+            <div class="card-icon">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="charts-container" *ngIf="chartsReady">
+    <!-- Order Status Pie Chart -->
+    <div class="chart-box">
+      <h3>Order Status Overview</h3>
+      <div class="chart-wrapper">
+        <canvas baseChart
+          [data]="orderStatusChartData"
+          [type]="'pie'"
+          [options]="orderStatusChartOptions">
+        </canvas>
+      </div>
+    </div>
+  
+    <!-- Top Selling Cycles Horizontal Bar Chart -->
+    <div class="chart-box">
+      <h3>Top Selling Cycles</h3>
+      <div class="chart-wrapper">
+        <canvas baseChart
+          [data]="topSellingCyclesChartData"
+          [type]="'bar'"
+          [options]="topSellingCyclesChartOptions">
+        </canvas>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="chart-section">
+    <h2>Monthly Revenue Trend</h2>
+    <canvas baseChart
+    width="400px"
+    height="130px" 
+      [datasets]="monthlyRevenueChartData"
+      [labels]="monthlyRevenueChartLabels"
+      [options]="monthlyRevenueChartOptions"
+      [type]="monthlyRevenueChartType">
+    </canvas>
+  </div>
+
+  <!-- <div class="chart-section">
+    <h2>Monthly Revenue Trend</h2>
+    <div style="height: 300px;">
+      <canvas baseChart
+        [datasets]="monthlyRevenueChartData"
+        [labels]="monthlyRevenueChartLabels"
+        [options]="monthlyRevenueChartOptions"
+        [type]="monthlyRevenueChartType">
+      </canvas>
+    </div>
+  </div> -->

@@ -1,0 +1,276 @@
+/* Brands Container */
+.brand-container {
+    background-color: rgba(17, 24, 39, 0.45);
+    border-radius: 8px;
+    padding: 20px;
+    color: white;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 20px;
+}
+
+/* Heading */
+h2 {
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.section-title{
+    color: linear-gradient(to right, #3498db, #2ecc71);
+}
+
+/* Add Brand Button */
+.add-btn {
+    background-color: #358276;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: bold;
+    float: right;
+    margin-bottom: 15px;
+}
+
+.add-btn:hover {
+    background-color: #238b7e;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 15px;
+}
+
+/* Table Header */
+thead {
+    background-color: #273f55;
+    color: #fff;
+}
+
+th {
+    padding: 12px 15px;
+    border: none;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Table Body */
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle row separation */
+    text-align: left;
+    font-size: 14px;
+    color: #fff; /* White text */
+}
+
+/* Zebra Striping */
+tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05); /* Very subtle striping */
+}
+
+/* Hover Effect */
+tbody tr:hover {
+    background-color: #161f2d; /* Light red tint on hover */
+    transition: background-color 0.2s ease;
+}
+
+/* Empty message styling */
+tbody tr td[colspan] {
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Action Buttons */
+.edit-btn, .delete-btn {
+    border: none;
+    padding: 8px 12px;
+    margin: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Edit Button */
+.edit-btn {
+    background-color: rgba(52, 152, 219, 0.15);
+    color: #3498db;
+    border: 1px solid rgba(52, 152, 219, 0.4);
+}
+
+.edit-btn:hover {
+    background-color: rgba(52, 152, 219, 0.3);
+    border-color: #3498db;
+}
+
+/* Delete Button */
+.delete-btn {
+    background-color: rgba(244, 67, 54, 0.9); /* Semi-transparent red */
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: rgba(211, 47, 47, 1);
+    transform: translateY(-1px);
+}
+
+/* Modal Background */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Darker overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(3px); /* Subtle blur for the background */
+}
+
+/* Modal Box */
+.modal-content {
+    background: rgba(30, 40, 56, 0.95); /* Slightly more opaque than the container */
+    padding: 25px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    font-family: 'Arial', sans-serif;
+    border: 1px solid rgba(74, 157, 179, 0.3); /* More visible teal border */
+}
+
+/* Form Group */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #fff; /* White text */
+    font-size: 14px;
+    text-align: left;
+}
+
+/* Input Fields and Textarea */
+input, textarea {
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    font-size: 14px;
+    color: #fff; /* White text */
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Arial', sans-serif; /* Match font family */
+}
+
+/* Specific textarea styling */
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #4a9db3; /* Teal accent */
+    box-shadow: 0 0 5px rgba(74, 157, 179, 0.5);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+input::placeholder, textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Form Buttons */
+.submit-btn, .cancel-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    flex: 1;
+}
+
+.submit-btn {
+    background-color: #2a9d8f; /* Keeping your original red */
+    color: #fff;
+    flex: 1; /* Keeping your original red */
+}
+
+.submit-btn:hover:not([disabled]) {
+    babackground-color: #238b7e;
+    transform: translateY(-1px);
+}
+
+.submit-btn[disabled] {
+    background-color:  #3b6560;
+    cursor: not-allowed;
+}
+
+.cancel-btn {
+    background-color: rgba(108, 117, 125, 0.5); /* Semi-transparent gray */
+}
+
+.cancel-btn:hover {
+    background-color: rgba(90, 98, 104, 0.8);
+    transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .brand-container {
+        padding: 15px;
+        width: 98%;
+    }
+    
+    .add-btn {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .edit-btn, .delete-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+        margin: 3px;
+    }
+    
+    .modal-content {
+        padding: 15px;
+        max-width: 95%;
+        margin: 0 10px;
+    }
+}

@@ -1,0 +1,257 @@
+
+/* Overview Container Styles */
+.overview-container {
+  padding: 20px;
+  /* width: 100%; */
+}
+
+/* Page Heading */
+.page-heading {
+  margin-bottom: 20px;
+}
+
+.page-heading h1 {
+  color: #2CEAA3;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* Cards Row */
+.cards-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+/* Card Styles */
+.card {
+  flex: 1;
+  border-radius: 8px;
+  background: rgba(30, 40, 56, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(74, 157, 179, 0.2);
+  overflow: hidden;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+  transition: transform 0.3s, box-shadow 0.3s;
+  
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.primary-card {
+    border-left: 4px solid #3498db;
+  }
+  
+  .success-card {
+    border-left: 4px solid #3a9e78;
+  }
+  
+  .info-card {
+    border-left: 4px solid #4e73df;
+  }
+  .warning-card{
+    border-left: 4px solid #FFC107;
+  }
+
+.card-body {
+  padding: 20px;
+}
+
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-info {
+  flex-grow: 1;
+}
+
+.card-label {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.card-value {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+/* Card Color Variants */
+.primary-card .card-label {
+  color: #1E88E5;
+}
+
+.success-card .card-label {
+  color: #2CEAA3;
+}
+
+.info-card .card-label {
+  color: #2196F3;
+}
+
+.warning-card .card-label {
+  color: #FFC107;
+}
+
+/* Card Value Colors */
+.primary-card .card-value {
+  color: #FFFFFF;
+}
+
+.success-card .card-value {
+  color: #FFFFFF;
+}
+
+.info-card .card-value {
+  color: #FFFFFF;
+}
+
+.warning-card .card-value {
+  color: #FFFFFF;
+}
+
+/* Card Icon Colors */
+.primary-card .card-icon {
+  color: #1E88E5;
+  background-color: rgba(30, 136, 229, 0.1);
+}
+
+.success-card .card-icon {
+  color: #2CEAA3;
+  background-color: rgba(44, 234, 163, 0.1);
+}
+
+.info-card .card-icon {
+  color: #2196F3;
+  background-color: rgba(33, 150, 243, 0.1);
+}
+
+.warning-card .card-icon {
+  color: #FFC107;
+  background-color: rgba(255, 193, 7, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .cards-row {
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    flex-basis: calc(50% - 10px);
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card {
+    flex-basis: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Chart Section */
+
+.charts-container {
+  display: flex;
+  gap: 20px;
+  margin: 20px 20px 30px;
+}
+
+/* Individual chart boxes */
+.chart-box {
+  flex: 1;
+  background: rgba(30, 40, 56, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(5px); /* Safari support */
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(74, 157, 179, 0.2);
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.chart-box h3 {
+  color: #3498db;
+  font-size: 20px;
+  margin: 0 0 20px;
+  font-weight: bold;
+  text-align: left;
+}
+
+/* Chart wrapper to control dimensions */
+.chart-wrapper {
+  position: relative;
+  height: 280px;
+  width: 100%;
+}
+
+/* Canvas styling - single definition */
+.chart-wrapper canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Dark theme chart styling */
+:host ::ng-deep {
+  .chart-legend {
+    color: white;
+    
+    .legend-label {
+      color: inherit; /* Inherits from parent */
+    }
+  }
+  
+  .chart-tooltip {
+    background: rgba(30, 40, 56, 0.9);
+    border: 1px solid rgba(74, 157, 179, 0.5);
+    color: white;
+  }
+}
+
+/* Responsive layout */
+@media (max-width: 992px) {
+  .charts-container {
+    flex-direction: column;
+  }
+  
+  .chart-box {
+    margin-bottom: 20px;
+  }
+  
+  .chart-wrapper {
+    height: 250px;
+  }
+}

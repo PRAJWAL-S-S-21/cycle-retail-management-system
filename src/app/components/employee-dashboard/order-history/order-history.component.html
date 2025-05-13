@@ -1,0 +1,118 @@
+
+
+<div class="order-history-container" *ngIf="!selectedOrder">
+  <h2 class="section-title">Order History</h2>
+  
+  <!-- Search and Filter Controls -->
+  <div class="filters-container">
+    <!-- Search Input -->
+    <div class="filter-group">
+      <input type="text" [(ngModel)]="searchTerm" 
+             (input)="applyFilters()" 
+             placeholder="Search orders...">
+    </div>
+    
+    <!-- Status Filter -->
+    <div class="filter-group">
+      <select [(ngModel)]="selectedStatus" (change)="applyFilters()">
+        <option value="all">All Statuses</option>
+        <option value="0">Pending</option>
+        <option value="1">Success</option>
+        <option value="2">Failed</option>
+      </select>
+    </div>
+    
+    <!-- Payment Type Filter -->
+    <div class="filter-group">
+      <select [(ngModel)]="selectedPaymentType" (change)="applyFilters()">
+        <option value="all">All Payment Types</option>
+        <option value="0">Cash</option>
+        <option value="1">UPI</option>
+        <option value="2">Card</option>
+      </select>
+    </div>
+    
+    <!-- Date Range Filter -->
+    <div class="filter-group">
+      <label>From:</label>
+      <input type="date" [(ngModel)]="fromDate" (change)="applyFilters()">
+    </div>
+    <div class="filter-group">
+      <label>To:</label>
+      <input type="date" [(ngModel)]="toDate" (change)="applyFilters()">
+    </div>
+    
+    <!-- Reset Button -->
+    <button class="reset-btn" (click)="resetFilters()">Reset Filters</button>
+  </div>
+  
+    <div class="table-responsive">
+      <table class="order-table">
+        <thead>
+          <tr>
+            <th>Order Number</th>
+            <th>Customer Name</th>
+            <th>Amount</th>
+            <th>Payment Type</th>
+            <th>Status</th>
+            <th>Order Date</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of  getPaginatedOrders()" class="order-row">
+            <td><span class="order-number">{{ order.orderNumber }}</span></td>
+            <td>{{ order.customer.firstName }} {{ order.customer.lastName }}</td>
+            <td>{{ order.totalAmount | currency }}</td>
+            <td>
+              <span class="payment-badge" [ngClass]="getPaymentTypeClass(order.payment.paymentType)">
+                {{ getPaymentType(order.payment.paymentType) }}
+              </span>
+            </td>
+            <td>
+              <span class="status-badge" [ngClass]="getStatusClass(order.status)">
+                {{ getOrderStatus(order.status) }}
+              </span>
+            </td>
+            <td>{{ order.orderDate | date:'medium' }}</td>
+            <td>
+              <button (click)="viewDetails(order)" class="details-btn">
+                <i class="fas fa-eye"></i>
+                <span>View</span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <!-- Add pagination controls after your table -->
+      <div class="pagination-controls" *ngIf="filteredOrders.length > itemsPerPage">
+        <button (click)="previousPage()" [disabled]="currentPage === 1">
+          <i class="fas fa-chevron-left"></i> Previous
+        </button>
+        
+        <span class="page-info">
+          Page {{currentPage}} of {{totalPages}}
+        </span>
+        
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+          Next <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+      </table>
+    </div>
+    
+    <!-- Empty state message when no orders -->
+    <div *ngIf="filteredOrders?.length === 0" class="empty-state">
+      <i class="fas fa-clipboard-list"></i>
+      <p>No orders found matching your criteria</p>
+    </div>
+  </div>
+
+  <app-order-details 
+  *ngIf="selectedOrder" 
+  [order]="selectedOrder" 
+  [showPrintButton]="true"
+  [showActions]="false"
+  (backToHistory)="selectedOrder = null">
+</app-order-details>
+
+ 

@@ -1,0 +1,56 @@
+<div class="cycle-type-container">
+    <h2>Cycle Types List</h2>
+
+    <button class="add-btn" (click)="openAddModal()">
+        <i class="fa fa-plus"></i> Add Cycle Type</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th><i class="fa fa-tag"></i> Cycle Type Name</th>
+                <th><i class="fas fa-tools"></i> Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cycleType of cycleTypes; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ cycleType.name }}</td>
+                <td>
+                    <button class="edit-btn" (click)="openEditModal(cycleType)"><i class="fa fa-pencil"></i> Edit</button>
+                    <button class="delete-btn" (click)="deleteCycleType(cycleType.typeID)"><i class="fa fa-trash"></i> Delete</button>
+                </td>
+            </tr>
+            <tr *ngIf="cycleTypes?.length === 0">
+                <td colspan="2">No cycle types found.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Add/Edit Cycle Type Modal -->
+    <div class="modal" *ngIf="isModalOpen">
+        <div class="modal-content">
+            <h2>{{ isEditMode ? 'Edit Cycle Type' : 'Add New Cycle Type' }}</h2>
+
+            <form #cycleTypeForm="ngForm" (ngSubmit)="isEditMode ? updateCycleType() : addCycleType()" class="cycle-type-form">
+                <div class="form-group">
+                    <label for="cycle-type-name">Cycle Type Name:</label>
+                    <input 
+                        id="cycle-type-name" 
+                        type="text" 
+                        [(ngModel)]="currentCycleType.name" 
+                        name="name" 
+                        required 
+                        placeholder="Enter cycle type name">
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="submit-btn" [disabled]="cycleTypeForm.invalid">
+                        {{ isEditMode ? 'Update' : 'Add' }}
+                    </button>
+                    <button type="button" class="cancel-btn" (click)="closeModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

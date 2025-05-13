@@ -1,0 +1,431 @@
+/* home.component.css */
+.home-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Carousel Styles */
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .carousel-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+  
+  .carousel-slide.active {
+    opacity: 1;
+  }
+  
+  .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: white;
+  }
+  
+  .slide-caption h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.3s;
+  }
+  
+  .carousel-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  
+  .prev-btn {
+    left: 10px;
+  }
+  
+  .next-btn {
+    right: 10px;
+  }
+  
+  .carousel-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .dot.active {
+    background: white;
+  }
+  
+  /* Featured Bikes Section */
+  .featured-section {
+    margin: 2rem 0;
+  }
+  
+  .featured-section h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .featured-bikes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .bike-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .bike-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .bike-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .bike-card h3 {
+    padding: 1rem 1rem 0.5rem;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .bike-brand, .bike-price {
+    padding: 0 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .bike-brand {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .bike-price {
+    font-weight: bold;
+    color: #1a8fe3;
+  }
+  
+  .card-actions {
+    display: flex;
+    padding: 0.5rem 1rem 1rem;
+    gap: 0.5rem;
+  }
+  
+  .view-btn, .card-actions .cart-btn {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+    flex: 1;
+  }
+  
+  .view-btn {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+  .view-btn:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .card-actions .cart-btn {
+    background-color: #1a8fe3;
+    color: white;
+  }
+  
+  .card-actions .cart-btn:hover {
+    background-color: #0c7cd5;
+  }
+  
+  /* Promo Banner */
+  .promo-banner {
+    background: linear-gradient(45deg, #1a8fe3, #34d39949);
+    border-radius: 8px;
+    padding: 2rem;
+    color: white;
+    margin: 2rem 0;
+    text-align: center;
+  }
+  
+  .promo-content h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .promo-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .shop-now-btn {
+    padding: 0.8rem 2rem;
+    background-color: white;
+    color: #1a8fe3;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 1rem;
+  }
+  
+  .shop-now-btn:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+  }
+  
+  /* Benefits Section */
+  .benefits-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  
+  .benefit-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+  
+  .benefit-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .benefit-icon {
+    font-size: 2.5rem;
+    color: #1a8fe3;
+    margin-bottom: 1rem;
+  }
+  
+  .benefit-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .benefit-card p {
+    color: #666;
+  }
+  
+  /* News Section */
+  .news-section {
+    margin: 2rem 0;
+  }
+  
+  .news-section h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .news-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .news-date {
+    color: #1a8fe3;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .news-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: #333;
+  }
+  
+  .news-card p {
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  
+  .read-more {
+    color: #1a8fe3;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  .read-more:hover {
+    color: #0c7cd5;
+  }
+
+  /* About Section */
+  .about-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 60px 0;
+    align-items: center;
+    background-color: #1e2936;
+    padding: 40px;
+    border-radius: 8px;
+    color: #fff;
+  }
+  
+  .about-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+  
+  .about-content p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #ddd;
+  }
+  
+  .learn-more-btn {
+    padding: 12px 24px;
+    background-color: transparent;
+    color: #3498db;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+  }
+  
+  .learn-more-btn:hover {
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    border-color: transparent;
+    color: white;
+  }
+  
+  .about-image img {
+    width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+  
+  @media (max-width: 768px) {
+    .about-section {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* .about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  } */
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .carousel-container {
+      height: 300px;
+    }
+    
+    .slide-caption h2 {
+      font-size: 1.5rem;
+    }
+
+    .about-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-image {
+        order: -1;
+    }
+    
+    .featured-bikes {
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .carousel-container {
+      height: 220px;
+    }
+    
+    .slide-caption h2 {
+      font-size: 1.2rem;
+    }
+    
+    .slide-caption p {
+      font-size: 0.9rem;
+    }
+    
+    .promo-content h2 {
+      font-size: 1.5rem;
+    }
+    
+    .promo-content h3 {
+      font-size: 1.2rem;
+    }
+  }

@@ -1,0 +1,118 @@
+
+<div class="form-container">
+    <h2>Add New Cycle</h2>
+
+    <form #cycleForm="ngForm" (ngSubmit)="addCycle()" class="cycle-form">
+        <div class="form-group">
+            <label for="cycle-sku">SKU:</label>
+            <input 
+                id="cycle-sku" 
+                type="text" 
+                [(ngModel)]="newCycle.sku" 
+                name="sku" 
+                required 
+                placeholder="Enter SKU">
+        </div>
+
+        <div class="form-group">
+            <label for="cycle-model-name">Model Name:</label>
+            <input 
+                id="cycle-model-name" 
+                type="text" 
+                [(ngModel)]="newCycle.model_name" 
+                name="model_name" 
+                required 
+                placeholder="Enter model name">
+        </div>
+
+        <div class="form-group">
+            <label for="cycle-brand">Brand:</label>
+            <select 
+                id="cycle-brand" 
+                [(ngModel)]="newCycle.brand_id" 
+                name="brand_id" 
+                required>
+                <option value="" disabled selected>Select a brand</option>
+                <option *ngFor="let brand of brands" [value]="brand.brand_id">{{ brand.name }}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="cycle-type">Cycle Type:</label>
+            <select 
+                id="cycle-type" 
+                [(ngModel)]="newCycle.type_id" 
+                name="type_id" 
+                required>
+                <option value="" disabled selected>Select a cycle type</option>
+                <option *ngFor="let cycleType of cycleTypes" [value]="cycleType.type_id">{{ cycleType.name }}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="cycle-description">Description:</label>
+            <textarea 
+                id="cycle-description" 
+                [(ngModel)]="newCycle.description" 
+                name="description" 
+                placeholder="Enter cycle description"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="cycle-price">Price:</label>
+            <input 
+                id="cycle-price" 
+                type="number" 
+                [(ngModel)]="newCycle.price" 
+                name="price" 
+                required 
+                placeholder="Enter price">
+        </div>
+
+        <div class="form-group">
+            <label for="cycle-cost-price">Cost Price:</label>
+            <input 
+                id="cycle-cost-price" 
+                type="number" 
+                [(ngModel)]="newCycle.cost_price" 
+                name="cost_price" 
+                placeholder="Enter cost price (optional)">
+        </div>
+
+        <div class="form-group">
+            <label for="cycle-stock-quantity">Stock Quantity:</label>
+            <input 
+                id="cycle-stock-quantity" 
+                type="number" 
+                [(ngModel)]="newCycle.stock_quantity" 
+                name="stock_quantity" 
+                required 
+                placeholder="Enter stock quantity">
+        </div>
+
+        <div class="form-group">
+            <label for="cycle-reorder-threshold">Reorder Threshold:</label>
+            <input 
+                id="cycle-reorder-threshold" 
+                type="number" 
+                [(ngModel)]="newCycle.reorder_threshold" 
+                name="reorder_threshold" 
+                placeholder="Enter reorder threshold (optional)">
+        </div>
+
+        <div class="form-group">
+            <label for="cycle-image-url">Image URL:</label>
+            <input 
+                id="cycle-image-url" 
+                type="text" 
+                [(ngModel)]="newCycle.image_url" 
+                name="image_url" 
+                placeholder="Enter image URL (optional)">
+        </div>
+
+        <div class="button-group">
+            <button type="submit" class="submit-btn" [disabled]="!cycleForm.valid">Add Cycle</button>
+            <button type="button" class="cancel-btn" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

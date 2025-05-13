@@ -1,0 +1,28 @@
+<div class="cart-container">
+    <h2>Your Cart</h2>
+  
+    <div *ngIf="cartItems.length > 0; else emptyCart">
+      <div class="cart-item" *ngFor="let item of cartItems">
+        <img [src]="'assets/images/cycles/' + item.imageURL">
+        <div class="info">
+          <h3>{{ item.modelName }}</h3>
+          <p>SKU: {{item.sku}}</p>
+          <p>Quantity: {{ item.quantity }}</p>
+          <p>Brand Name: {{item.brandName}}</p>
+          <p>Type Name: {{item.typeName}}</p>
+          <p class="price">Price: ₹{{ item.price }}</p>
+          <button (click)="removeItem(item.cycleID)">Remove</button>
+        </div>
+      </div>
+  
+      <div class="checkout">
+        <button (click)="checkout()">Proceed to Checkout</button>
+        <button class="close-btn" (click)="closeCart()">Close Cart</button>
+      </div>
+    </div>
+  
+    <ng-template #emptyCart>
+      <p>Your cart is empty.</p>
+    </ng-template>
+  </div>
+  

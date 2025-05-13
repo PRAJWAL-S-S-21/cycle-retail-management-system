@@ -1,0 +1,112 @@
+
+
+<div class="customer-form-container">
+  <div class="form-card">
+    <h2 class="form-title">Customer Registration</h2>
+
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()" class="customer-form">
+      <div class="form-row">
+        <!-- Phone (used to search for existing customer) -->
+        <div class="form-group">
+          <label class="form-label">Phone</label>
+          <input class="form-input" formControlName="phone" type="text" (blur)="checkCustomerByPhone()" />
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input class="form-input" formControlName="email" type="email" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <!-- First Name -->
+        <div class="form-group">
+          <label class="form-label">First Name</label>
+          <input class="form-input" formControlName="firstName" type="text" />
+        </div>
+
+        <!-- Last Name -->
+        <div class="form-group">
+          <label class="form-label">Last Name</label>
+          <input class="form-input" formControlName="lastName" type="text" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <!-- Loyalty Points -->
+        <div class="form-group">
+          <label class="form-label">Loyalty Points</label>
+          <input class="form-input" formControlName="loyaltyPoints" type="number" />
+        </div>
+      </div>
+
+      <!-- Billing Address -->
+      <h4 class="section-title">Billing Address</h4>
+      <div formGroupName="billingAddress" class="address-section">
+        <div class="form-row">
+          <div class="form-group">
+            <input class="form-input" formControlName="streetLine1" placeholder="Street Line 1" />
+          </div>
+          <div class="form-group">
+            <input class="form-input" formControlName="streetLine2" placeholder="Street Line 2" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <input class="form-input" formControlName="city" placeholder="City" />
+          </div>
+          <div class="form-group">
+            <input class="form-input" formControlName="state" placeholder="State" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <input class="form-input" formControlName="postalCode" placeholder="Postal Code" />
+          </div>
+          <div class="form-group">
+            <input class="form-input" formControlName="country" placeholder="Country" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Shipping Address -->
+      <h4 class="section-title">Shipping Address</h4>
+      <div formGroupName="shippingAddress" class="address-section">
+        <div class="form-row">
+          <div class="form-group">
+            <input class="form-input" formControlName="streetLine1" placeholder="Street Line 1" />
+          </div>
+          <div class="form-group">
+            <input class="form-input" formControlName="streetLine2" placeholder="Street Line 2" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <input class="form-input" formControlName="city" placeholder="City" />
+          </div>
+          <div class="form-group">
+            <input class="form-input" formControlName="state" placeholder="State" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <input class="form-input" formControlName="postalCode" placeholder="Postal Code" />
+          </div>
+          <div class="form-group">
+            <input class="form-input" formControlName="country" placeholder="Country" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button (click)="goToCart()" class="secondary-button">
+          Return to Cart
+        </button>
+        <button class="submit-btn" mat-raised-button color="primary">
+          {{ isExistingCustomer ? 'Update Customer' : 'Create Customer' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

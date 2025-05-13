@@ -1,0 +1,124 @@
+
+/* Container Styling */
+.add-employee-container {
+    width: 100%;
+    max-width: 500px; /* Slightly wider */
+    margin: 20px auto;
+    padding: 25px;
+    background: rgba(30, 40, 56, 0.3); /* Dark blue-gray with transparency */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    backdrop-filter: blur(5px); /* Adds a slight blur effect to the background */
+    font-family: 'Arial', sans-serif;
+    border: 1px solid rgba(74, 157, 179, 0.2); /* Subtle teal border to match the highlights */
+  }
+  
+  /* Heading */
+  h2 {
+    text-align: center;
+    color: #fff; /* White text for contrast */
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  
+  /* Form Layout */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Form Group */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #fff; /* White for labels */
+    font-size: 14px;
+  }
+  
+  /* Input and Select Styling */
+  input, select {
+    padding: 12px;
+    margin: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
+    border-radius: 6px;
+    font-size: 14px;
+    color: #fff; /* White text */
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly light background */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  input:focus, select:focus {
+    outline: none;
+    border-color: #4a9db3; /* Teal accent to match design */
+    box-shadow: 0 0 5px rgba(74, 157, 179, 0.5); /* Teal glow */
+    background-color: rgba(255, 255, 255, 0.15); /* Slightly lighter on focus */
+  }
+  
+  /* Placeholder Styling */
+  input::placeholder {
+    color: rgba(255, 255, 255, 0.6); /* Light gray placeholder */
+    font-style: italic;
+  }
+  
+  option {
+    background-color: #1e2838; /* Dark background for dropdown options */
+    color: #fff;
+  }
+  
+  /* Button Group */
+  .button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  /* Buttons */
+  button {
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn {
+    background-color: #2a9d8f; /* Keeping your original red */
+    color: #fff;
+    flex: 1;
+  }
+  
+  .submit-btn:hover {
+    background-color: #238b7e;
+  }
+  
+  .cancel-btn {
+    background-color: rgba(108, 117, 125, 0.5); /* Semi-transparent gray */
+    color: #fff;
+    flex: 1;
+  }
+  
+  .cancel-btn:hover {
+    background-color: rgba(90, 98, 104, 0.8); /* Darker gray on hover */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 500px) {
+    .add-employee-container {
+        max-width: 100%;
+        margin: 20px 10px;
+        padding: 15px;
+    }
+    .button-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+  }

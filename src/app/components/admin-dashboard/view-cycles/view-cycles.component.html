@@ -1,0 +1,215 @@
+<div class="cycle-container">
+    <h2>View Cycles</h2>
+
+    <button class="add-btn" (click)="openModal()"><i class="fa fa-plus"></i> Add New Cycle</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>SKU</th>
+                <th>Model Name</th>
+                <th>Brand</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cycle of cycles; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ cycle.sku }}</td>
+                <td>{{ cycle.modelName }}</td>
+                <td>{{ cycle.brandName }}</td> 
+                <td>{{ cycle.typeName }}</td>
+                <td>{{ cycle.price }}</td>
+                <td>{{ cycle.stockQuantity }}</td>
+                <td>
+                    <img *ngIf="cycle.imageURL" [src]="'assets/images/cycles/' + cycle.imageURL" alt="{{ cycle.modelName }}" style="width: 50px; height: auto;">
+                    <span *ngIf="!cycle.imageURL">No image</span>
+                </td>
+                <td>
+                    <button class="edit-btn" (click)="openEditModel(cycle)"><i class="fa fa-pencil"></i></button>
+                    <button class = "delete-btn" (click)="deleteCycle(cycle.cycleID)"><i class="fa fa-trash"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Add Cycle Modal -->
+    <div class="modal" *ngIf="isModalOpen">
+        <div class="modal-content">
+            <h2>Add New Cycle</h2>
+
+            <form #cycleForm="ngForm" (ngSubmit)="addCycle()" class="cycle-form">
+                <div class="form-group">
+                    <label for="cycle-sku">SKU:</label>
+                    <input 
+                        id="cycle-sku" 
+                        type="text" 
+                        [(ngModel)]="newCycle.sku" 
+                        name="sku" 
+                        required 
+                        placeholder="Enter SKU">
+                </div>
+
+                <div class="form-group">
+                    <label for="cycle-model-name">Model Name:</label>
+                    <input 
+                        id="cycle-model-name" 
+                        type="text" 
+                        [(ngModel)]="newCycle.model_name" 
+                        name="model_name" 
+                        required 
+                        placeholder="Enter model name">
+                </div>
+
+                <div class="form-group">
+                    <label for="cycle-brand">Brand:</label>
+                    <select 
+                        id="cycle-brand" 
+                        [(ngModel)]="newCycle.brand_id" 
+                        name="brand_id" 
+                        required>
+                        <option value="" disabled selected>Select a brand</option>
+                        <option *ngFor="let brand of brands" [value]="brand.brandID">{{ brand.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cycle-type">Cycle Type:</label>
+                    <select 
+                        id="cycle-type" 
+                        [(ngModel)]="newCycle.type_id" 
+                        name="type_id" 
+                        required>
+                        <option value="" disabled selected>Select a cycle type</option>
+                        <option *ngFor="let cycleType of cycleTypes" [value]="cycleType.typeID">{{ cycleType.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cycle-description">Description:</label>
+                    <textarea 
+                        id="cycle-description" 
+                        [(ngModel)]="newCycle.description" 
+                        name="description" 
+                        placeholder="Enter cycle description"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="cycle-price">Price:</label>
+                    <input 
+                        id="cycle-price" 
+                        type="number" 
+                        [(ngModel)]="newCycle.price" 
+                        name="price" 
+                        required 
+                        placeholder="Enter price">
+                </div>
+
+                <div class="form-group">
+                    <label for="cycle-cost-price">Cost Price:</label>
+                    <input 
+                        id="cycle-cost-price" 
+                        type="number" 
+                        [(ngModel)]="newCycle.cost_price" 
+                        name="cost_price" 
+                        placeholder="Enter cost price (optional)">
+                </div>
+
+                <div class="form-group">
+                    <label for="cycle-stock-quantity">Stock Quantity:</label>
+                    <input 
+                        id="cycle-stock-quantity" 
+                        type="number" 
+                        [(ngModel)]="newCycle.stock_quantity" 
+                        name="stock_quantity" 
+                        required 
+                        placeholder="Enter stock quantity">
+                </div>
+
+                <div class="form-group">
+                    <label for="cycle-reorder-threshold">Reorder Threshold:</label>
+                    <input 
+                        id="cycle-reorder-threshold" 
+                        type="number" 
+                        [(ngModel)]="newCycle.reorder_threshold" 
+                        name="reorder_threshold" 
+                        placeholder="Enter reorder threshold (optional)">
+                </div>
+
+                <div class="form-group">
+                    <label for="cycle-image-url">Image URL:</label>
+                    <input 
+                        id="cycle-image-url" 
+                        type="text" 
+                        [(ngModel)]="newCycle.image_url" 
+                        name="image_url" 
+                        placeholder="Enter image URL (optional)">
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="submit-btn" [disabled]="!cycleForm.valid">Add Cycle</button>
+                    <button type="button" class="cancel-btn" (click)="closeModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+<!-- Edit Cycle Modal -->
+<div class="modal" *ngIf="isEditModalOpen">
+    <div class="modal-content">
+        <h2>Edit Cycle</h2>
+
+        <form #editCycleForm="ngForm" (ngSubmit)="updateCycle()" class="cycle-form">
+            <input type="hidden" [(ngModel)]="selectedCycle.cycleID" name="cycleID">
+
+            <div class="form-group">
+                <label for="edit-sku">SKU:</label>
+                <input id="edit-sku" type="text" [(ngModel)]="selectedCycle.sku" name="sku" required>
+            </div>
+
+            <div class="form-group">
+                <label for="edit-model">Model Name:</label>
+                <input id="edit-model" type="text" [(ngModel)]="selectedCycle.modelName" name="modelName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="edit-brand">Brand:</label>
+                <select id="edit-brand" [(ngModel)]="selectedCycle.brandID" name="brandID" required>
+                    <option *ngFor="let brand of brands" [value]="brand.brandID">{{ brand.name }}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="edit-type">Cycle Type:</label>
+                <select id="edit-type" [(ngModel)]="selectedCycle.typeID" name="typeID" required>
+                    <option *ngFor="let type of cycleTypes" [value]="type.typeID">{{ type.name }}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="edit-price">Price:</label>
+                <input id="edit-price" type="number" [(ngModel)]="selectedCycle.price" name="price" required>
+            </div>
+
+            <div class="form-group">
+                <label for="edit-stock">Stock Quantity:</label>
+                <input id="edit-stock" type="number" [(ngModel)]="selectedCycle.stockQuantity" name="stockQuantity" required>
+            </div>
+
+            <div class="form-group">
+                <label for="edit-image">Image URL:</label>
+                <input id="edit-image" type="text" [(ngModel)]="selectedCycle.imageURL" name="imageURL">
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="submit-btn" [disabled]="!editCycleForm.valid">Update Cycle</button>
+                <button type="button" class="cancel-btn" (click)="closeEditModal()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>

@@ -1,0 +1,56 @@
+<!-- <div class="success-container">
+    <div class="success-icon">
+      <img src="assets/logo/success.png" alt="Success" />
+    </div>
+  
+    <h2>Payment Successful!</h2>
+    <p>Your payment was processed successfully.</p>
+  
+    <div class="success-buttons">
+      <button (click)="viewOrderDetails()">View Order Details</button>
+      <button (click)="downloadReceipt()">Download Receipt</button>
+    </div>
+  </div> -->
+
+  <!-- <div class="success-container">
+    <div class="success-video">
+      <video autoplay muted loop playsinline>
+        <source src="/assets/animations/loading-check.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  
+    <h2>Payment Successful!</h2>
+    <p>Your payment was processed successfully.</p>
+  
+    <div class="success-buttons">
+        <button (click)="viewOrderDetails()" class="primary-btn">View Order Details</button>
+        <button (click)="printReceipt()" class="secondary-btn">Download Receipt</button>
+    </div>
+  </div>
+
+  <div style="display: none">
+    <div id="print-section">
+      <app-order-details [order]="order" [showPrintButton]="false" [showActions]="true"></app-order-details>
+    </div>
+  </div> -->
+
+  <div class="success-container">
+    <div class="success-image">
+      <img src="assets/logo/payment_done.png" alt="Payment Successful">
+    </div>
+  
+    <h2>Payment Successful!</h2>
+    <p>Your payment was processed successfully.</p>
+  
+    <div class="success-buttons">
+      <button (click)="viewOrderDetails()" class="primary-btn">View Order Details</button>
+      <button (click)="printReceipt()" class="secondary-btn">Download Receipt</button>
+    </div>
+  </div>
+  
+  <div style="display: none">
+    <div id="print-section">
+      <app-order-details [order]="order" [showPrintButton]="false" [showActions]="true"></app-order-details>
+    </div>
+  </div>

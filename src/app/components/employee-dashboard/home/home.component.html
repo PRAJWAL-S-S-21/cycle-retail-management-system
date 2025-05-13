@@ -1,0 +1,102 @@
+<!-- home.component.html -->
+<div class="home-container">
+    <!-- Hero Banner with Carousel -->
+    <div class="carousel-container">
+      <div class="carousel-slide" *ngFor="let slide of slides; let i = index" [ngClass]="{'active': currentSlide === i}">
+        <img [src]="slide.image" [alt]="slide.alt">
+        <div class="slide-caption">
+          <h2>{{ slide.title }}</h2>
+          <p>{{ slide.description }}</p>
+        </div>
+      </div>
+      <button class="carousel-btn prev-btn" (click)="prevSlide()">❮</button>
+      <button class="carousel-btn next-btn" (click)="nextSlide()">❯</button>
+      <div class="carousel-dots">
+        <span class="dot" *ngFor="let slide of slides; let i = index" 
+              [ngClass]="{'active': currentSlide === i}"
+              (click)="goToSlide(i)"></span>
+      </div>
+    </div>
+  
+    <!-- Featured Bikes Section -->
+    <!-- <section class="featured-section">
+      <h2>Featured Bikes</h2>
+      <div class="featured-bikes">
+        <div class="bike-card" *ngFor="let bike of featuredBikes">
+          <img [src]="bike.image" [alt]="bike.name">
+          <h3>{{ bike.name }}</h3>
+          <p class="bike-brand">{{ bike.brand }} | {{ bike.type }}</p>
+          <p class="bike-price">₹{{ bike.price }}</p>
+          <div class="card-actions">
+            <button class="view-btn" (click)="viewDetails(bike)">
+              <i class="fas fa-eye"></i>
+            </button>
+            <button class="cart-btn" (click)="addToCart(bike)">
+              <i class="fas fa-shopping-cart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section> -->
+  
+    <!-- Promotional Banner -->
+    <section class="promo-banner">
+      <div class="promo-content">
+        <h2>{{ currentPromo.heading }}</h2>
+        <h3>{{ currentPromo.subheading }}</h3>
+        <p>{{ currentPromo.text }}</p>
+        <button class="shop-now-btn" (click)="navigateToCycles()">SHOP NOW</button>
+      </div>
+    </section>
+
+     <!-- About Us -->
+     <section class="about-section">
+        <div class="about-content">
+            <h2>Welcome to CycleWorld</h2>
+            <p>For over 15 years, we've been providing cyclists with premium bikes and accessories to enhance your cycling experience. Whether you're a road warrior, trail blazer, or casual rider, we have the perfect ride for you.</p>
+            <p>Our expert staff is passionate about cycling and ready to help you find your ideal match. Visit our store today and discover why we're the most trusted cycle shop in the region.</p>
+            <button class="learn-more-btn">Learn More</button>
+        </div>
+        <div class="about-image">
+            <img src="/assets/home/slide4.jpg" alt="Our Shop">
+        </div>
+    </section>
+  
+    <!-- Company Benefits -->
+    <!-- <section class="benefits-section">
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <i class="fas fa-bicycle"></i>
+        </div>
+        <h3>Employee Discount</h3>
+        <p>Enjoy special pricing on all products as a valued team member</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <i class="fas fa-tools"></i>
+        </div>
+        <h3>Free Maintenance</h3>
+        <p>Complimentary tune-ups and repairs for your bike</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <i class="fas fa-percent"></i>
+        </div>
+        <h3>First Access</h3>
+        <p>Be the first to know about new arrivals and special offers</p>
+      </div>
+    </section> -->
+  
+    <!-- Latest News -->
+    <!-- <section class="news-section">
+      <h2>Latest Updates</h2>
+      <div class="news-grid">
+        <div class="news-card" *ngFor="let news of latestNews">
+          <div class="news-date">{{ news.date }}</div>
+          <h3>{{ news.title }}</h3>
+          <p>{{ news.summary }}</p>
+          <a href="javascript:void(0)" class="read-more">Read More</a>
+        </div>
+      </div>
+    </section> -->
+  </div>

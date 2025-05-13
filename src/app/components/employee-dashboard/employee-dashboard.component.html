@@ -1,0 +1,56 @@
+<!-- employee-dashboard.component.html -->
+<div class="container">
+    <header class="navbar">
+        <div class="logo">
+            <img src="assets/logo/bike.png" width="95px" height="35px" alt="Logo" class="logo-img">
+            <h1>Employee Dashboard</h1>
+        </div>
+        <div class="navbar-buttons">
+            <a class="nav-icon notification-icon" href="#" title="Notifications">
+              <img src="assets/logo/notification.png" alt="Notifications">
+              <span class="badge">3</span>
+          </a>
+            <!-- Using routerLink for cart -->
+              <a class="nav-icon cart-icon" routerLink="/employee-dashboard/cart" routerLinkActive="active" title="Cart">
+                <img src="assets/logo/add_to_cart.png" alt="Cart">
+                <span class="badge">2</span>
+            </a>
+            <!-- User avatar icon -->
+            <a class="nav-icon user-icon" routerLink="/employee-dashboard/profile" routerLinkActive="active" title="Profile">
+                <img src="assets/logo/avatar.png" alt="User">
+            </a>
+        </div>
+    </header>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <h2>Dashboard</h2>
+            <ul>
+              <li>
+                <a routerLink="/employee-dashboard/home" routerLinkActive="active">
+                  <i class="fas fa-home"></i> Home
+                </a>
+              </li>
+              <li>
+                <a routerLink="/employee-dashboard/cycle-list" routerLinkActive="active">
+                  <i class="fas fa-bicycle"></i> Cycles
+                </a>
+              </li>
+              <li>
+                <a routerLink="orders" routerLinkActive="active">
+                  <i class="fas fa-history"></i> Order History
+                </a>
+              </li>
+              <li>
+                <a routerLink="customers" routerLinkActive="active">
+                  <i class="fas fa-user"></i> Customers
+                </a>
+              </li>
+            </ul>
+
+          </aside>
+      
+        <main class="content">
+            <router-outlet></router-outlet>
+          </main>
+    </div>
+</div>

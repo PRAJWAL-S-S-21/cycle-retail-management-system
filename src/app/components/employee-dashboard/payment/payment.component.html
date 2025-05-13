@@ -1,0 +1,115 @@
+<!-- <h2>Select Payment Method</h2>
+
+<div class="payment-methods">
+  <label>
+    <input type="radio" name="method" [value]="PaymentType.CASH" [(ngModel)]="paymentType" /> Cash
+  </label>
+  <label>
+    <input type="radio" name="method" [value]="PaymentType.UPI" [(ngModel)]="paymentType" /> UPI
+  </label>
+  <label>
+    <input type="radio" name="method" [value]="PaymentType.CARD" [(ngModel)]="paymentType" /> Card
+  </label>
+</div> -->
+
+<!-- CASH -->
+<!-- <div *ngIf="paymentType === PaymentType.CASH" class="payment-form">
+  <label><input type="checkbox" [(ngModel)]="confirmedByEmployee" /> Confirm cash received</label>
+</div> -->
+
+<!-- UPI -->
+<!-- <div *ngIf="paymentType === PaymentType.UPI" class="payment-form">
+  <p>Show this QR to customer and enter UPI transaction ID:</p>
+  <img src="/assets/logo/qr_code.jpg" alt="UPI QR" width="200" />
+  <input type="text" [(ngModel)]="upiTransactionId" placeholder="UPI Transaction ID" />
+  <label><input type="checkbox" [(ngModel)]="confirmedByEmployee" /> Confirm UPI payment</label>
+</div> -->
+
+<!-- CARD -->
+<!-- <div *ngIf="paymentType === PaymentType.CARD" class="payment-form">
+  <input type="text" [(ngModel)]="stripePaymentId" placeholder="Stripe Payment ID" />
+  <input type="text" [(ngModel)]="cardLast4" maxlength="4" placeholder="Last 4 Digits of Card" />
+</div>
+
+<button (click)="submitOrder()">Submit Order</button> -->
+
+<!-- Payment Selection Section -->
+<div class="payment-section">
+    <h2 class="section-title">Select Payment Method</h2>
+    
+    <div class="payment-methods">
+      <div class="payment-option" [ngClass]="{'selected': paymentType === PaymentType.CASH}">
+        <input type="radio" id="cash" name="method" [value]="PaymentType.CASH" [(ngModel)]="paymentType" />
+        <label for="cash">
+          <i class="fas fa-money-bill-wave"></i>
+          <span>Cash</span>
+        </label>
+      </div>
+      
+      <div class="payment-option" [ngClass]="{'selected': paymentType === PaymentType.UPI}">
+        <input type="radio" id="upi" name="method" [value]="PaymentType.UPI" [(ngModel)]="paymentType" />
+        <label for="upi">
+          <i class="fas fa-mobile-alt"></i>
+          <span>UPI</span>
+        </label>
+      </div>
+      
+      <div class="payment-option" [ngClass]="{'selected': paymentType === PaymentType.CARD}">
+        <input type="radio" id="card" name="method" [value]="PaymentType.CARD" [(ngModel)]="paymentType" />
+        <label for="card">
+          <i class="fas fa-credit-card"></i>
+          <span>Card</span>
+        </label>
+      </div>
+    </div>
+  
+    <!-- Method-specific payment forms with transitions -->
+    <div class="payment-details-container">
+      <!-- CASH -->
+      <div *ngIf="paymentType === PaymentType.CASH" class="payment-form cash-form">
+        <div class="confirmation-box">
+          <label class="confirm-label">
+            <input type="checkbox" [(ngModel)]="confirmedByEmployee" />
+            <span>Confirm cash received</span>
+          </label>
+        </div>
+      </div>
+  
+      <!-- UPI -->
+      <div *ngIf="paymentType === PaymentType.UPI" class="payment-form upi-form">
+        <p class="instruction-text">Show this QR code to customer for payment:</p>
+        <div class="qr-container">
+          <img src="/assets/logo/qr_code.jpg" alt="UPI QR" />
+        </div>
+        <div class="form-group">
+          <label>UPI Transaction ID</label>
+          <input type="text" [(ngModel)]="upiTransactionId" placeholder="Enter transaction ID" class="form-control" />
+        </div>
+        <div class="confirmation-box">
+          <label class="confirm-label">
+            <input type="checkbox" [(ngModel)]="confirmedByEmployee" />
+            <span>Confirm UPI payment received</span>
+          </label>
+        </div>
+      </div>
+  
+      <!-- CARD -->
+      <div *ngIf="paymentType === PaymentType.CARD" class="payment-form card-form">
+        <div class="form-group">
+          <label>Stripe Payment ID</label>
+          <input type="text" [(ngModel)]="stripePaymentId" placeholder="Enter Stripe payment ID" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label>Last 4 Digits of Card</label>
+          <input type="text" [(ngModel)]="cardLast4" maxlength="4" placeholder="xxxx" class="form-control" />
+        </div>
+      </div>
+    </div>
+  
+    <div class="submit-area">
+      <button class="submit-btn" (click)="submitOrder()">
+        <i class="fas fa-check-circle"></i>
+        Complete Payment
+      </button>
+    </div>
+  </div>
